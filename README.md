@@ -18,7 +18,7 @@ Implementation tasks:
 - [x] API
 
 API:
-Access API JSON output host:8000/api
+GET API JSON output host:8000/api
 
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/EasyBudgetWebApp/easybudget-backend-python/main)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/EasyBudgetWebApp/easybudget-backend-python?style=plastic)
