@@ -80,16 +80,6 @@ WSGI_APPLICATION = "EasyBudget.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql",
-#         "NAME": "py_dev_easy_budget",
-#         "USER": "postgres",
-#         "PASSWORD": "HL9Fa.yvmnD37r21427",
-#         "HOST": "3.75.99.157",
-#         "PORT": "5432",
-#     }
-# }
 
 DATABASES = {
     "default": {
