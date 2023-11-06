@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-from decouple import config, Csv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'your-default-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DJANGO_DEBUG', default=False, cast=bool) 
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='', cast=Csv())
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
 
 # Application definition
 
@@ -74,13 +73,13 @@ WSGI_APPLICATION = "EasyBudget.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": config('DB_NAME'),  
-        "USER": config('DB_USER'),  
-        "PASSWORD": config('DB_PASSWORD'),  
-        "HOST": config('DB_HOST'),  
-        "PORT": config('DB_PORT', default=5432, cast=int),  
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'your-default-db-name'),
+        'USER': os.environ.get('DB_USER', 'your-default-db-user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'your-default-db-password'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),  # Default is localhost
+        'PORT': os.environ.get('DB_PORT', '5432'),  # Default PostgreSQL port
     }
 }
 
