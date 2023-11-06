@@ -11,7 +11,12 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+<<<<<<< HEAD
 from decouple import config, Csv
+=======
+
+from secret import *
+>>>>>>> dsk-branch
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +25,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+<<<<<<< HEAD
 SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DJANGO_DEBUG', default=False, cast=bool) 
 
 ALLOWED_HOSTS = config('DJANGO_ALLOWED_HOSTS', default='', cast=Csv())
+=======
+SECRET_KEY = "django-insecure-#tyo#x4@fx8vg1g^g#ft_tk0z-8$5@u4m##_-20bz+tp76i3!v"
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = []
+>>>>>>> dsk-branch
 
 # Application definition
 
@@ -37,9 +51,21 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'budget',
+<<<<<<< HEAD
 ]
 
 MIDDLEWARE = [
+=======
+
+    'rest_framework',
+    "corsheaders",
+]
+
+MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+
+>>>>>>> dsk-branch
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -73,6 +99,7 @@ WSGI_APPLICATION = "EasyBudget.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+<<<<<<< HEAD
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -84,6 +111,27 @@ DATABASES = {
     }
 }
 
+=======
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": db_name,
+        "USER": db_user,
+        "PASSWORD": db_pass,
+        "HOST": db_host,
+        "PORT": db_port,
+    }
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+>>>>>>> dsk-branch
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -117,9 +165,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+<<<<<<< HEAD
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR), 'static')
 
+=======
+STATICFILES_DIRS = (os.path.join(BASE_DIR), 'static')
+
+MEDIA_URL = '/images/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+
+>>>>>>> dsk-branch
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -129,3 +186,45 @@ AUTH_USER_MODEL = "budget.CustomUser"
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+<<<<<<< HEAD
+=======
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+# OR
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://127.0.0.1:3000", # Front-End server
+#     'http://127.0.0.1:8000' # Back-End server
+# ]
+#
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://127.0.0.1:3000", # Front-End server
+#     'http://127.0.0.1:8000' # Back-End server
+# ]
+
+
+CORS_ALLOW_HEADERS = (
+    "accept",
+    "authorization",
+    "content-type",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    'Access-Control-Allow-Origin',
+)
+
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:3000', # Front-End server
+)
+
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+>>>>>>> dsk-branch
